@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Frete {
@@ -12,6 +13,7 @@ public class Frete {
     public void setEndereco(Endereco endereco){
         this.endereco=endereco;
     }
+
     public Endereco getEndereco(){
         return endereco;
     }
@@ -30,23 +32,35 @@ public class Frete {
     public void removePacote(Pacote pacote){
         pacotes.remove(pacote);
     }
+
+    public List<Pacote> getPacotes() {
+        return pacotes;
+    }
+
     public void addPacote(Pacote pacote){
+        if (getPacotes() == null) {
+            pacotes = new ArrayList<>();
+        }
         pacotes.add(pacote);
     }
     public void exibirPacotes(){
         System.out.println("Lista dos pacotes: ");
+        System.out.println("------------------------");
         for (Pacote i : pacotes){
-            System.out.println("Endereco: " + i.getEndereco());
+            System.out.println("ID: " + i.getId());
+            System.out.println("Endereco: " + i.getEndereco().getLogradouro() + " - numero: " + i.getEndereco().getNumero());
             System.out.println("Observações: " + i.getObservacao());
+            calcularValorFrete();
             System.out.println("Cargas: ");
             i.exibirListCarga();
+            System.out.println("===============================================");
         }
 
     }
 
     //===============================Métodos================================
     public void calcularValorFrete(){
-        System.out.println("Valor do frete é de: R$" + (distancia*4));
+        valor +=distancia*9.5;
     }
 
     //=======================================================================

@@ -14,32 +14,38 @@ public class Pacote {
     public void setId(int id){
         this.id=id;
     }
+
     public int getId(){
         return id;
     }
+
     public void setEndereco(Endereco endereco){
         this.endereco=endereco;
     }
+
     public Endereco getEndereco(){
         return endereco;
     }
+
     public void setObservacao(String observacao){
         this.observacao=observacao;
     }
+
     public String getObservacao(){
         return observacao;
     }
+
     public void setListcarga(List<Carga> listcarga){
         this.listcarga=listcarga;
     }
+
     public List<Carga> getListcarga(){
         return listcarga;
     }
+
     public void addListCarga(Carga carga){
-        if(listcarga.isEmpty()){
+        if(getListcarga() == null) {
             listcarga = new ArrayList<>();
-            listcarga.add(carga);
-            return;
         }
         listcarga.add(carga);
     }
@@ -52,9 +58,12 @@ public class Pacote {
     }
     public void exibirListCarga(){
         System.out.println("Lista de produtos:");
+        System.out.println("---------------------------------");
+
         for (Carga i: listcarga){
             System.out.println("Protudo: " + i.getDescricao());
             System.out.println("Massa: " + i.getMassa());
+            System.out.println("--------------------------------");
         }
     }
 
